@@ -7,11 +7,12 @@ public class ConsoleProgress implements Runnable {
 
         while (!Thread.currentThread().isInterrupted()) {
             String[] process = {"__", "  \\", "   |", "    /", "    __"};
-            for (int i = 0; i < process.length; i++) {
-                System.out.print("\r load: " + process[i]);
+            for (String s : process) {
+                System.out.print("\r load: " + s);
                 try {
                     Thread.sleep(500);
                 } catch (InterruptedException e) {
+                    Thread.currentThread().interrupt();
                 }
             }
         }
