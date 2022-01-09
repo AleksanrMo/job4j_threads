@@ -16,9 +16,9 @@ public class Wget2 implements Runnable {
 
     @Override
     public void run() {
-        String[] s = url.split("/");
+        String[] str = url.split("/");
         try (BufferedInputStream in = new BufferedInputStream(new URL(url).openStream());
-             FileOutputStream fileOutputStream = new FileOutputStream("t" + s[s.length - 1])) {
+             FileOutputStream fileOutputStream = new FileOutputStream(str[str.length - 1])) {
             byte[] dataBuffer = new byte[1024];
             int bytesRead;
             long start = System.currentTimeMillis();
