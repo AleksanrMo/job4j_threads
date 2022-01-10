@@ -25,11 +25,4 @@ public final  class ParseFile implements Content {
       }
       return output;
     }
-
-    public static void main(String[] args) {
-      File file = new File("./tet.txt");
-        ParseFile parseFile =  new ParseFile(file);
-        System.out.println(parseFile.getContent(e -> true));
-
-    }
 }

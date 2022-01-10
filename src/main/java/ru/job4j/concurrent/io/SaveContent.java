@@ -5,7 +5,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-public final class SaveContent {
+public final class SaveContent implements Save {
 
     private final File file;
 
@@ -13,6 +13,7 @@ public final class SaveContent {
         this.file =  file;
     }
 
+    @Override
     public synchronized void save(String content)  {
         try (BufferedOutputStream o = new BufferedOutputStream(new FileOutputStream(file))) {
             for (int i = 0; i < content.length(); i += 1) {
