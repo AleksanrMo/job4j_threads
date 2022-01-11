@@ -12,7 +12,7 @@ public class UserStore {
     private final Map<Integer, User> map = new ConcurrentHashMap<>();
 
     public synchronized boolean add(User user) {
-        return map.putIfAbsent(user.getId(), user) != null;
+        return map.putIfAbsent(user.getId(), user) == null;
     }
 
     public synchronized boolean update(User user) {
