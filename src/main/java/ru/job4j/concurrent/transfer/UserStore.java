@@ -43,10 +43,8 @@ public class UserStore {
     public synchronized boolean transfer(int fromId, int toId, int amount) {
         boolean rst = false;
         if (map.containsKey(fromId) && map.containsKey(toId) && amount > 0 && map.get(fromId) >= amount) {
-                int i = map.get(fromId) - amount;
-                int i2 = map.get(toId) + amount;
-                map.replace(fromId, i);
-                map.replace(toId, i2);
+                map.replace(fromId, map.get(fromId) - amount);
+                map.replace(toId, map.get(toId) + amount);
             rst = true;
         }
         return rst;
