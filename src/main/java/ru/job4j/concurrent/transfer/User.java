@@ -1,7 +1,5 @@
 package ru.job4j.concurrent.transfer;
 
-import java.util.Objects;
-
 public class User {
 
     private final int id;
