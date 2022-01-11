@@ -2,55 +2,53 @@ package ru.job4j.concurrent.transfer;
 
 import net.jcip.annotations.GuardedBy;
 import org.junit.runner.notification.RunListener;
-
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 @RunListener.ThreadSafe
 public class UserStore {
 
     @GuardedBy("this")
-    private final List<User> list;
-
-    public UserStore() {
-        list = new ArrayList<>();
-    }
+    private final Map<Integer, Integer> map = new ConcurrentHashMap<>();
 
     public synchronized boolean add(User user) {
-        return list.add(user);
+        boolean rst = false;
+        if (user != null) {
+            map.put(user.getId(), user.getAmount());
+            rst = true;
+        }
+        return rst;
     }
 
     public synchronized boolean update(User user) {
-        boolean rst =  false;
-        for (User temp: list) {
-            if (user.getId() == temp.getId()) {
-               temp.setAmount(user.getAmount());
-                rst = true;
-            }
+        boolean rst = false;
+        if (map.containsKey(user.getId())) {
+            map.put(user.getId(), user.getAmount());
+            rst = true;
         }
        return rst;
+
     }
 
     public synchronized boolean delete(User user) {
-        return list.remove(user);
+        boolean rst = false;
+        if (map.containsKey(user.getId())) {
+            map.remove(user.getId());
+            rst = true;
+        }
+        return  rst;
+
     }
 
     public synchronized boolean transfer(int fromId, int toId, int amount) {
-        boolean check = false;
-        User from = null;
-        User to = null;
-        for (User user: list) {
-            if (user.getId() == fromId) {
-                from = user;
-            } else if (user.getId() == toId) {
-                to = user;
-            }
+        boolean rst = false;
+        if (map.containsKey(fromId) && map.containsKey(toId) && amount > 0 && map.get(fromId) >= amount) {
+                int i = map.get(fromId) - amount;
+                int i2 = map.get(toId) + amount;
+                map.replace(fromId, i);
+                map.replace(toId, i2);
+            rst = true;
         }
-       if (from != null && to != null && amount > 0 && from.getAmount() >= amount) {
-           from.setAmount(from.getAmount() - amount);
-           to.setAmount(to.getAmount() + amount);
-           check = true;
-       }
-        return check;
+        return rst;
    }
 }
