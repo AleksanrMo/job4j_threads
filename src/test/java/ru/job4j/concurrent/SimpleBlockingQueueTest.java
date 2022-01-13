@@ -11,16 +11,24 @@ public class SimpleBlockingQueueTest {
         SimpleBlockingQueue<Integer> simple = new SimpleBlockingQueue<>();
         Thread thread1 = new Thread(() -> {
             while (!Thread.currentThread().isInterrupted()) {
-                for (int i = 0; i < 30; i++) {
-                    simple.offer(i);
-                }
+              try {
+                  for (int i = 0; i < 30; i++) {
+                      simple.offer(i);
+                  }
+              } catch (InterruptedException e) {
+                  Thread.currentThread().interrupt();
+              }
             }
         });
         Thread thread2 = new Thread(() -> {
             while (!Thread.currentThread().isInterrupted()) {
-                for (int i = 0; i < 30; i++) {
-                    simple.poll();
-                }
+              try {
+                  for (int i = 0; i < 30; i++) {
+                      simple.poll();
+                  }
+              } catch (InterruptedException e) {
+                  Thread.currentThread().interrupt();
+              }
             }
         });
         thread1.start();
