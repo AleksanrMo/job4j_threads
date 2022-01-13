@@ -30,6 +30,7 @@ public class SimpleBlockingQueue<T> {
         while (queue.isEmpty()) {
                 wait();
         }
+
         notifyAll();
         return queue.remove();
     }
