@@ -32,11 +32,11 @@ public class SimpleBlockingQueueTest {
         });
         thread1.start();
         thread2.start();
+        Thread.sleep(1000);
         thread1.interrupt();
         thread2.interrupt();
         thread1.join();
         thread2.join();
         Assertions.assertEquals(simple.getSize(), 0);
     }
-
 }
