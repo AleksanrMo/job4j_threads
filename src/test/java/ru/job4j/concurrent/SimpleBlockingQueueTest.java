@@ -35,7 +35,7 @@ public class SimpleBlockingQueueTest {
         thread2.interrupt();
         thread1.join();
         thread2.join();
-        //Assert.assertEquals(simple.getQueue().size(), (0));
+        Assert.assertEquals(simple.getQueue().size(), (0));
     }
 
 }
