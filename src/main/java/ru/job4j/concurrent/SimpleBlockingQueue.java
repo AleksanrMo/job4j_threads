@@ -10,6 +10,7 @@ import java.util.Queue;
 public class SimpleBlockingQueue<T> {
 
     @GuardedBy("this")
+
     private Queue<T> queue = new LinkedList<>();
     private int  limit = 10;
 
@@ -23,9 +24,6 @@ public class SimpleBlockingQueue<T> {
             }
         notifyAll();
         queue.add(value);
-
-
-
             }
 
     public synchronized T poll() throws InterruptedException {
