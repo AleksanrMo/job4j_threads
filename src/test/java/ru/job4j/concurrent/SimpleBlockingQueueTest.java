@@ -1,7 +1,7 @@
 package ru.job4j.concurrent;
 
-import org.junit.Test;
-import static org.junit.Assert.assertEquals;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 public class SimpleBlockingQueueTest {
 
@@ -37,7 +37,7 @@ public class SimpleBlockingQueueTest {
         thread2.interrupt();
         thread1.join();
         thread2.join();
-        assertEquals(simple.getQueue().size(), (0));
+        Assertions.assertEquals(simple.getQueue().size(), (0));
     }
 
 }
