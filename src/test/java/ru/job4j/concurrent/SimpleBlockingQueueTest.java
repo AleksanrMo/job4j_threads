@@ -1,11 +1,13 @@
 package ru.job4j.concurrent;
 
-import org.junit.Assert;
 import org.junit.Test;
+import static org.junit.Assert.assertEquals;
+
 public class SimpleBlockingQueueTest {
 
+
     @Test
-    public void test() throws InterruptedException {
+    public void whenTwoThreadsWorking() throws InterruptedException {
         SimpleBlockingQueue<Integer> simple = new SimpleBlockingQueue<>();
         Thread thread1 = new Thread(() -> {
             while (!Thread.currentThread().isInterrupted()) {
@@ -35,7 +37,7 @@ public class SimpleBlockingQueueTest {
         thread2.interrupt();
         thread1.join();
         thread2.join();
-        Assert.assertEquals(simple.getQueue().size(), (0));
+        assertEquals(simple.getQueue().size(), (0));
     }
 
 }
