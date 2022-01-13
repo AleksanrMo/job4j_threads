@@ -15,7 +15,6 @@ public class SimpleBlockingQueueTest {
                     simple.offer(i);
                 }
             }
-
         });
         Thread thread2 = new Thread(() -> {
             while (!Thread.currentThread().isInterrupted()) {
@@ -23,7 +22,6 @@ public class SimpleBlockingQueueTest {
                     simple.poll();
                 }
             }
-
         });
         thread1.start();
         thread2.start();
