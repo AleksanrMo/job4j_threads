@@ -7,11 +7,11 @@ public class SimpleBlockingQueueTest {
 
     @Test
     public void whenTwoThreadsWorking() throws InterruptedException {
-        SimpleBlockingQueue<Integer> simple = new SimpleBlockingQueue<>();
+        SimpleBlockingQueue<Integer> simple = new SimpleBlockingQueue<>(10);
         Thread thread1 = new Thread(() -> {
             while (!Thread.currentThread().isInterrupted()) {
               try {
-                  for (int i = 0; i < 30; i++) {
+                  for (int i = 0; i < 10; i++) {
                       simple.offer(i);
                   }
               } catch (InterruptedException e) {
@@ -22,8 +22,8 @@ public class SimpleBlockingQueueTest {
         Thread thread2 = new Thread(() -> {
             while (!Thread.currentThread().isInterrupted()) {
               try {
-                  for (int i = 0; i < 30; i++) {
-                      simple.poll();
+                  for (int i = 0; i < 10; i++) {
+                      System.out.println(simple.poll());
                   }
               } catch (InterruptedException e) {
                   Thread.currentThread().interrupt();
@@ -36,7 +36,7 @@ public class SimpleBlockingQueueTest {
         thread2.interrupt();
         thread1.join();
         thread2.join();
-        Assertions.assertEquals(simple.getQueue().size(), (0));
+        Assertions.assertEquals(simple.getSize(), 0);
     }
 
 }
