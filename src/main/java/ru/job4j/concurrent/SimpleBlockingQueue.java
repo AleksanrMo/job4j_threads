@@ -10,7 +10,6 @@ import java.util.Queue;
 public class SimpleBlockingQueue<T> {
 
     @GuardedBy("this")
-
     private final Queue<T> queue = new LinkedList<>();
     private final int  limit = 10;
 

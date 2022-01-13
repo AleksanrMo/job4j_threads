@@ -5,7 +5,6 @@ import org.junit.jupiter.api.Test;
 
 public class SimpleBlockingQueueTest {
 
-
     @Test
     public void whenTwoThreadsWorking() throws InterruptedException {
         SimpleBlockingQueue<Integer> simple = new SimpleBlockingQueue<>();
