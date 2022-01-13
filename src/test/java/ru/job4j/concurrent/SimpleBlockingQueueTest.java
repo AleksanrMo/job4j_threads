@@ -1,9 +1,7 @@
 package ru.job4j.concurrent;
 
+import org.junit.Assert;
 import org.junit.Test;
-import static org.hamcrest.Matchers.is;
-import static org.junit.Assert.assertThat;
-
 public class SimpleBlockingQueueTest {
 
     @Test
@@ -37,8 +35,7 @@ public class SimpleBlockingQueueTest {
         thread2.interrupt();
         thread1.join();
         thread2.join();
-        assertThat(simple.getQueue().size(), is(0));
-
+        Assert.assertEquals(simple.getQueue().size(), (0));
     }
 
 }
