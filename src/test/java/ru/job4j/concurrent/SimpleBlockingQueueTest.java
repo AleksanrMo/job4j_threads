@@ -53,9 +53,7 @@ public class SimpleBlockingQueueTest {
                     queue.offer(l);
                 } catch (InterruptedException ignored) {
                   }
-
-            } )
-        );
+            }));
         producer.start();
         Thread consumer = new Thread(
                 () -> {
