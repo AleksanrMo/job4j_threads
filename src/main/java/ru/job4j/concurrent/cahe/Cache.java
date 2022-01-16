@@ -19,7 +19,6 @@ public class Cache {
             model.setVersion(b.getVersion() + 1);
                 return model;
             }) != null;
-
     }
 
     public void delete(Base model) {

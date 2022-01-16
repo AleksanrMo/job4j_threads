@@ -6,16 +6,14 @@ import org.junit.jupiter.api.Assertions;
 public class CacheTest {
 
     @Test
-
     public void whenUpdateBaseReturnTrue() {
         Cache cache = new Cache();
         cache.add(new Base(0, 1));
         cache.add(new Base(1, 1));
-        Assertions.assertTrue( cache.update(new Base(1, 1)));
+        Assertions.assertTrue(cache.update(new Base(1, 1)));
     }
 
     @Test
-
     public void whenVersionIsChanged() {
         Cache cache = new Cache();
         Base base = new Base(0, 1);
@@ -38,7 +36,6 @@ public class CacheTest {
     }
 
     @Test
-
     public void whenDelete() {
         Cache cache = new Cache();
         Base base = new Base(0, 1);
