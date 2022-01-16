@@ -45,4 +45,5 @@ public class CacheTest {
         cache.delete(base);
         Assertions.assertEquals(cache.getSize(), 1);
     }
+
 }

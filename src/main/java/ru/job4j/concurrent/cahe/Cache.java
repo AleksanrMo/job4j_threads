@@ -28,4 +28,5 @@ public class Cache {
     public int getSize() {
         return map.size();
     }
+
 }
