@@ -35,15 +35,6 @@ public class ThreadPool {
         tasks.offer(job);
     }
 
-    public  void i() throws InterruptedException {
-        for (int i = 0; i < tasks.getSize() - 1; i++) {
-            threads.add(new Thread(tasks.poll()));
-        }
-        for (Thread t: threads) {
-            t.start();
-        }
-    }
-
     public  void shutdown() throws InterruptedException {
         for (Thread t: threads) {
             t.interrupt();
