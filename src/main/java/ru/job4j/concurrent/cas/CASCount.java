@@ -8,7 +8,6 @@ import java.util.concurrent.atomic.AtomicReference;
 @ThreadSafe
 public class CASCount {
 
-
     private final AtomicReference<Integer> count = new AtomicReference<>(0);
 
     public void increment() {
@@ -18,8 +17,10 @@ public class CASCount {
         } while (!count.compareAndSet(count.get(), it));
 
     }
-
     public int get() {
         return count.get();
     }
 }
+
+
+
