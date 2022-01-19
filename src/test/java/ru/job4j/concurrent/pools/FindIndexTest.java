@@ -21,5 +21,4 @@ class FindIndexTest {
              int index = FindIndex.run(ints, 5);
         });
     }
-
 }
