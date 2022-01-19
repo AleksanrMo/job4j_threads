@@ -24,7 +24,7 @@ public class FindIndex<T> extends RecursiveTask<Integer> {
            return result();
 
         }
-            int mid = (to + from) / 2;
+            int mid =  (to + from) / 2;
             FindIndex<T> left = new FindIndex<>(array, element, from, mid);
             FindIndex<T> right = new FindIndex<>(array, element, mid + 1, to);
             left.fork();
@@ -35,7 +35,7 @@ public class FindIndex<T> extends RecursiveTask<Integer> {
     }
 
     private int result() {
-        for (int i = from; i <= to; i++) {
+        for (int i = from; i < to; i++) {
             if (array[i].equals(element)) {
                 return i;
             }
