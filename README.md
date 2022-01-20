@@ -4,3 +4,5 @@
 [![codecov](https://codecov.io/gh/AleksanrMo/job4j_threads/branch/master/graph/badge.svg?token=P5EZ9ZOPZZ)](https://codecov.io/gh/AleksanrMo/job4j_threads)
 
 Объединение зафиксированных изменений !
+
+В курсе производилась работа над верками git.
